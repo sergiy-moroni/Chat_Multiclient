@@ -1,9 +1,13 @@
-#include "Chat.h"
-#pragma comment(lib, "ws2_32.lib")
+#include <vector>
 #include <winsock2.h>
 #include <iostream>
+#include <string>
+#include <thread>
 
+#pragma comment(lib, "ws2_32.lib")
 #pragma warning(disable: 4996)
+
+using namespace std;
 
 SOCKET Connection;
 using namespace std;
@@ -155,7 +159,6 @@ void start(SOCKET ClientSock)
 		}
 		closesocket(ClientSock);
 		WSACleanup();
-
 	}
 }
 
@@ -170,7 +173,6 @@ int main()
 		std::cout << "Error" << std::endl;
 		exit(1);
 	}
-
 	SOCKADDR_IN addr;
 	int sizeofaddr = sizeof(addr);
 	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
